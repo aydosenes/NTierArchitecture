@@ -30,7 +30,7 @@ namespace Test.WebAPI
             services.AddScoped(typeof(IEntityRepository<>), typeof(EntityRepository<>));
             services.AddScoped(typeof(IEntityService<>), typeof(EntityManager<>));
 
-            services.AddScoped<ITestService, TestManager>();
+            services.AddScoped<IUpTestService, UpTestManager>();
             services.AddScoped<ISubTestService, SubTestManager>();
 
             services.AddControllers();

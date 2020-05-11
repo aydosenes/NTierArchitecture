@@ -25,7 +25,7 @@ namespace Test.MVC.Controllers
         // GET: Test
         public async Task<IActionResult> Index()
         {
-            var tests = await _context.TestModels.ToListAsync();
+            var tests = await _context.UpTests.ToListAsync();
 
             tests.ForEach(x =>
             {
@@ -45,7 +45,7 @@ namespace Test.MVC.Controllers
 
             int decryptedId = int.Parse(_dataProtector.Unprotect(id));
 
-            var testModel = await _context.TestModels
+            var testModel = await _context.UpTests
                 .FirstOrDefaultAsync(m => m.Id == decryptedId);
             if (testModel == null)
             {
@@ -66,7 +66,7 @@ namespace Test.MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdentityNo,Name,SurName,BirthDate,isDeleted")] TestModel testModel)
+        public async Task<IActionResult> Create([Bind("Id,IdentityNo,Name,SurName,BirthDate,isDeleted")] Core.Entities.UpTest testModel)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Test.MVC.Controllers
                 return NotFound();
             }
 
-            var testModel = await _context.TestModels.FindAsync(id);
+            var testModel = await _context.UpTests.FindAsync(id);
             if (testModel == null)
             {
                 return NotFound();
@@ -98,7 +98,7 @@ namespace Test.MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdentityNo,Name,SurName,BirthDate,isDeleted")] TestModel testModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdentityNo,Name,SurName,BirthDate,isDeleted")] Core.Entities.UpTest testModel)
         {
             if (id != testModel.Id)
             {
@@ -136,7 +136,7 @@ namespace Test.MVC.Controllers
                 return NotFound();
             }
 
-            var testModel = await _context.TestModels
+            var testModel = await _context.UpTests
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (testModel == null)
             {
@@ -151,15 +151,15 @@ namespace Test.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var testModel = await _context.TestModels.FindAsync(id);
-            _context.TestModels.Remove(testModel);
+            var testModel = await _context.UpTests.FindAsync(id);
+            _context.UpTests.Remove(testModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TestModelExists(int id)
         {
-            return _context.TestModels.Any(e => e.Id == id);
+            return _context.UpTests.Any(e => e.Id == id);
         }
     }
 }

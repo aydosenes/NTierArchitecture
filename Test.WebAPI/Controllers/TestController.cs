@@ -16,31 +16,31 @@ namespace Test.WebAPI.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        private ITestService _testService;
+        private IUpTestService _uptestService;
 
-        public TestController(ITestService testService)
+        public TestController(IUpTestService testService)
         {
-            _testService = testService;
+            _uptestService = testService;
         }
 
         [HttpGet("get")]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(TestModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UpTest), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAll()
         {
-            var test = await _testService.GetAllAsync();
+            var test = await _uptestService.GetAllAsync();
 
             return Ok(test);
         }
 
         [HttpGet("get/{id}")]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(TestModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UpTest), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetTestById(int id)
         {
-            var test = await _testService.GetById(id);
+            var test = await _uptestService.GetById(id);
 
             return Ok(test);
             

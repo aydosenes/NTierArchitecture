@@ -9,24 +9,24 @@ using Test.Core.Repositories;
 
 namespace Test.Data.Repositories
 {
-    public class TestRepositoryDal : EntityRepository<TestModel>, ITestRepositoryDal
+    public class UpTestRepositoryDal : EntityRepository<UpTest>, IUpTestRepositoryDal
     {
         private TestContext testContext { get => _testContext as TestContext; }
-        public TestRepositoryDal(TestContext testContext) :base(testContext)
+        public UpTestRepositoryDal(TestContext testContext) :base(testContext)
         {
             // this is a constructor to provide a communication among entity rep., test rep. and unit of work.
         }
 
-        public TestModel CheckTest(int idno)
+        public UpTest CheckTest(int idno)
         {
             using (var context = new TestContext())
             {
-                var result = context.TestModels.FirstOrDefault();
+                var result = context.UpTests.FirstOrDefault();
                 return result;
             }
         }
 
-        public async Task<TestModel> GetWithSubClassById(int testId)
+        public async Task<UpTest> GetWithSubClassById(int testId)
         {
             //using (var context = new TestContext())    //***-----> this method also can be used instead.***
             //{
@@ -34,7 +34,7 @@ namespace Test.Data.Repositories
             //    return result;
             //}
 
-            return await testContext.TestModels.Include(x=>x.SubTestModels).SingleOrDefaultAsync(x => x.Id == testId);
+            return await testContext.UpTests.Include(x=>x.SubTest).SingleOrDefaultAsync(x => x.Id == testId);
         }
     }
 }

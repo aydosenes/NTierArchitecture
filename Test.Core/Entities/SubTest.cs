@@ -2,17 +2,17 @@
 
 namespace Test.Core.Entities
 { 
-    public class SubTestModel : IEntity
+    public class SubTest : IEntity
     {
         
-        public int SubTestModelId { get; set; }
+        public int SubTestId { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public long Phone { get; set; }
-        public bool isDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         //[ForeignKey("Id")]
-        public int TestModelId { get; set; }
-        public virtual TestModel TestModel { get; set; }
+        public int UpTestId { get; set; }
+        public virtual UpTest UpTest { get; set; }
     }
 }

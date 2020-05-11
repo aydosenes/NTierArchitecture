@@ -4,9 +4,9 @@ using Test.Core.Entities;
 
 namespace Test.Data.EntityConfiguration
 {
-    public class TestConfiguration : IEntityTypeConfiguration<TestModel>
+    public class UpTestConfiguration : IEntityTypeConfiguration<UpTest>
     {
-        public void Configure(EntityTypeBuilder<TestModel> builder)
+        public void Configure(EntityTypeBuilder<UpTest> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();

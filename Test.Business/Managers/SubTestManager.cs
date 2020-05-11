@@ -11,19 +11,19 @@ using Test.Core.UnitOfWork;
 
 namespace Test.Business.Managers
 {
-    public class SubTestManager : EntityManager<SubTestModel>, ISubTestService
+    public class SubTestManager : EntityManager<SubTest>, ISubTestService
     {
-        public SubTestManager(IUnitOfWork unitOfWork, IEntityRepository<SubTestModel> repository)
+        public SubTestManager(IUnitOfWork unitOfWork, IEntityRepository<SubTest> repository)
             : base (unitOfWork, repository)
         {
 
         }
-        public SubTestModel CheckSubTest(int id)
+        public SubTest CheckSubTest(int id)
         {
             return _unitOfWork.SubTest.CheckSubTest(id);
         }
 
-        public async Task<SubTestModel> GetWithParentClassById(int subtestmodelId)
+        public async Task<SubTest> GetWithParentClassById(int subtestmodelId)
         {
             return await _unitOfWork.SubTest.GetWithParentClassById(subtestmodelId);
         }

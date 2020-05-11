@@ -8,11 +8,11 @@ namespace Test.Data.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private TestRepositoryDal _testRepository;
+        private UpTestRepositoryDal _uptestRepository;
         private SubTestRepositoryDal _subTestRepository;
         private readonly TestContext _testContext;
 
-        public ITestRepositoryDal Test => _testRepository = _testRepository ?? new TestRepositoryDal(_testContext);
+        public IUpTestRepositoryDal UpTest => _uptestRepository = _uptestRepository ?? new UpTestRepositoryDal(_testContext);
         public ISubTestRepositoryDal SubTest => _subTestRepository = _subTestRepository ?? new SubTestRepositoryDal(_testContext);
 
         public UnitOfWork(TestContext testContext)

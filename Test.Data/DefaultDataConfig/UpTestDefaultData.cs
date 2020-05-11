@@ -5,19 +5,19 @@ using Test.Core.Entities;
 
 namespace Test.Data.DefaultDataConfig
 {
-    public class TestDefaultData : IEntityTypeConfiguration<TestModel>
+    public class UpTestDefaultData : IEntityTypeConfiguration<UpTest>
     {
         private readonly int[]_ids;
 
-        public TestDefaultData(int[] ids)
+        public UpTestDefaultData(int[] ids)
         {
             _ids = ids;
         }
 
-        public void Configure(EntityTypeBuilder<TestModel> builder)
+        public void Configure(EntityTypeBuilder<UpTest> builder)
         {
             builder.HasData(
-                new TestModel
+                new UpTest
                 {
                     Id = _ids[0],
                     IdentityNo = 12345678910,
@@ -25,7 +25,7 @@ namespace Test.Data.DefaultDataConfig
                     SurName = "Surname1",
                     BirthDate = new DateTime(1995, 12, 28)
                 },
-                new TestModel
+                new UpTest
                 {
                     Id = _ids[1],
                     IdentityNo = 12345678912,
@@ -33,7 +33,7 @@ namespace Test.Data.DefaultDataConfig
                     SurName = "Surname2",
                     BirthDate = new DateTime(1995, 12, 29)
                 },
-                new TestModel
+                new UpTest
                 {
                     Id = _ids[2],
                     IdentityNo = 12345678914,

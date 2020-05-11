@@ -6,7 +6,7 @@ namespace Test.Core.UnitOfWork
 {
     public interface IUnitOfWork
     {
-        ITestRepositoryDal Test { get; }
+        IUpTestRepositoryDal UpTest { get; }
         ISubTestRepositoryDal SubTest { get; }
 
         Task CommitAsync();

@@ -3,9 +3,9 @@ using Test.Core.Entities;
 
 namespace Test.Core.Services
 {
-    public interface ISubTestService : IEntityService<SubTestModel>
+    public interface ISubTestService : IEntityService<SubTest>
     {
-        SubTestModel CheckSubTest(int id);
-        Task<SubTestModel> GetWithParentClassById(int subtestmodelId);
+        SubTest CheckSubTest(int id);
+        Task<SubTest> GetWithParentClassById(int subtestmodelId);
     }
 }

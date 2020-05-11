@@ -6,9 +6,9 @@ using Test.Core.Entities;
 
 namespace Test.Core.Repositories
 {
-    public interface ITestRepositoryDal : IEntityRepository<TestModel>
+    public interface IUpTestRepositoryDal : IEntityRepository<UpTest>
     {
-        TestModel CheckTest(int id);
-        Task<TestModel> GetWithSubClassById(int testId);
+        UpTest CheckTest(int id);
+        Task<UpTest> GetWithSubClassById(int testId);
     }
 }

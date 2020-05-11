@@ -6,7 +6,7 @@ using Test.Core.Repositories;
 
 namespace Test.Data.Repositories
 {
-    public class SubTestRepositoryDal : EntityRepository<SubTestModel>, ISubTestRepositoryDal
+    public class SubTestRepositoryDal : EntityRepository<SubTest>, ISubTestRepositoryDal
     {
         private TestContext testContext { get => _testContext as TestContext; }
 
@@ -15,16 +15,16 @@ namespace Test.Data.Repositories
             // this is a constructor to provide a communication among entity rep., test rep. and unit of work.
         }
 
-        public SubTestModel CheckSubTest(int id)
+        public SubTest CheckSubTest(int id)
         {
             using (var context = new TestContext())
             {
-                var result = context.SubTestModels.FirstOrDefault();
+                var result = context.SubTests.FirstOrDefault();
                 return result;
             }
         }
 
-        public async Task<SubTestModel> GetWithParentClassById(int subtestmodelId)
+        public async Task<SubTest> GetWithParentClassById(int subtestmodelId)
         {
             //using (var context = new TestContext())       //***-----> this method also can be used instead.***
             //{
@@ -32,7 +32,7 @@ namespace Test.Data.Repositories
             //    return result;
             //}
 
-            return await testContext.SubTestModels.Include(x => x.TestModel).SingleOrDefaultAsync(x => x.TestModelId == subtestmodelId);
+            return await testContext.SubTests.Include(x => x.UpTest).SingleOrDefaultAsync(x => x.UpTestId == subtestmodelId);
 
         }
 
